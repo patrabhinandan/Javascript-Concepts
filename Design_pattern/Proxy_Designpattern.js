@@ -1,36 +1,38 @@
-function createAPICalls(){
-    this.getValue = function(coin){
-        console.log("Calling external API.....");
-        switch (coin){
-            case "bitcoin" :
-              return "$45000"
-              break;
-            case "ethirum" :
-              return "$34567"
-              break;
+ function getSharePrices(){  
+    
+    this.getValue = (share)=> {
+        console.log("calling external APIs.....");
+        switch (share) {
+            case "wipro":
+                return "800"
+                break;
+            case "tcs":
+                return "2700"
+                break;
+            case "cts":
+                return "2300"
+                break;
         }
     }
-}
-function  createProxyAPICalls(){
-    const api = new createAPICalls();
-    this.cache = {}
-    this.getValue = function(coin){
-        if(this.cache[coin]==null){
-            this.cache[coin] = api.getValue(coin)
+ }
+
+ function getSharePricesProxy(){
+    const api = new getSharePrices();
+    this.cache = {};
+    this.getValue = (share)=>{
+        if(this.cache[share]==null){
+            this.cache[share] = api.getValue(share)
         }
-        return this.cache[coin]
+        return this.cache[share];
     }
-}
- const proxy = new createProxyAPICalls();
- console.log(proxy.getValue("bitcoin"));
- console.log(proxy.getValue("ethirum"));
- console.log(proxy.getValue("bitcoin"));
- console.log(proxy.getValue("ethirum"));
- console.log(proxy.getValue("bitcoin"));
- console.log(proxy.getValue("ethirum"));
- console.log(proxy.getValue("bitcoin"));
- console.log(proxy.getValue("ethirum"));
- console.log(proxy.getValue("bitcoin"));
- console.log(proxy.getValue("ethirum"));
- console.log(proxy.getValue("bitcoin"));
- console.log(proxy.getValue("ethirum"));
+ }
+ const proxy = new getSharePricesProxy();
+ console.log(proxy.getValue("wipro"));
+ console.log(proxy.getValue("tcs"));
+ console.log(proxy.getValue("cts"));
+ console.log(proxy.getValue("wipro"));
+console.log(proxy.getValue("tcs"));
+ console.log(proxy.getValue("cts"));
+ console.log(proxy.getValue("wipro"));
+console.log(proxy.getValue("tcs"));
+ console.log(proxy.getValue("cts"));

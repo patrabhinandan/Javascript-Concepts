@@ -1,32 +1,30 @@
 function Subject(){
-    this.observer = []
+    this.observerList = [];
 }
+Subject.prototype = {
 
-Subject.prototype =  {
-    subscribe: function (fn) {
-        this.observer.push(fn)
+    subscribe : function(fn){
+        this.observerList.push(fn)
     },
-    unsubscribe: function(fnToRemove){
-        this.observer = this.observer.filter(fn=>{
-            if(fn!=fnToRemove) return fn;
+    unsubscribe : function(fntoRemove){
+        this.observerList = this.observerList.filter(fn=>{
+            if(fn!=fntoRemove){ return fn}
         })
-       
     },
-    next:function(msg){
-        this.observer.forEach(fn=>{
-            fn.call(this,msg)
-        })
+    next : function(){
+        this.observerList.forEach(fn => {
+            fn.call()
+        });
     }
 }
 const subject = new Subject();
-function Observer1 (){
-    console.log("Observer 1 called")
+function observer1(){
+    console.log("Fire Observer 1..")
 }
-function Observer2 (){
-    console.log("Observer 2 called")
+function observer2(){
+    console.log("Fire Observer 2..")
 }
-subject.subscribe(Observer1);
-subject.subscribe(Observer2);
-subject.next();
-subject.unsubscribe(Observer2);
+subject.subscribe(observer1);
+subject.subscribe(observer2);
+subject.unsubscribe(observer1);
 subject.next();

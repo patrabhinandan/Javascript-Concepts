@@ -36,3 +36,36 @@ console.log("DPS Fees- " +  calculateSchoolFees.calculateFees(StudentFees));
 
 calculateSchoolFees.setStrategy(shs);
 console.log("SHS Fees- " +  calculateSchoolFees.calculateFees(StudentFees));
+
+
+/**************************************/
+function Coromondal(details){
+    this.fareCalc=(details)=>{
+        return 2000;
+    }
+    
+}
+function HowrahMail(details){
+    this.fareCalc=(details)=>{
+        return 2500;
+    }
+}
+function CalculateFare(){
+    trainName = ""
+    this.setStrategy=(train)=>{
+        return this.trainName = train
+    }
+    this.fare = (details)=>{
+       return this.trainName.fareCalc(details);
+    }
+}
+
+const cor = new Coromondal();
+const hwhMail = new HowrahMail();
+const calculateFare = new CalculateFare();
+let details = {name:'Abhi', place:'Chennai'}
+calculateFare.setStrategy(hwhMail);
+console.log("Train fare==", calculateFare.fare(details));
+
+calculateFare.setStrategy(cor);
+console.log("Train fare==", calculateFare.fare(details));
