@@ -11,20 +11,20 @@ Subject.prototype = {
             if(fn!=fntoRemove){ return fn}
         })
     },
-    next : function(){
+    next : function(message){
         this.observerList.forEach(fn => {
-            fn.call()
+            fn.call(this,message)
         });
     }
 }
 const subject = new Subject();
-function observer1(){
-    console.log("Fire Observer 1..")
+function observer1(message){
+    console.log("Fire Observer 1.. in " , message)
 }
-function observer2(){
-    console.log("Fire Observer 2..")
+function observer2(message){
+    console.log("Fire Observer 2.. in " , message)
 }
 subject.subscribe(observer1);
 subject.subscribe(observer2);
 subject.unsubscribe(observer1);
-subject.next();
+subject.next("test");
