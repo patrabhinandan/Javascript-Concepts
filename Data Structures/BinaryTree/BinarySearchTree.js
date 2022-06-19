@@ -182,22 +182,82 @@ class BST {
         if(node == null) return 0;
         return (this.totalSize(node.left) + this.totalSize(node.right) + 1)
     }
+    levelOrderTraversal(node = this.root){
+        let Q = [];
+        let result = [];
+        Q.push(node);
+        Q.push(null);
+        while(Q.length>0){
+            let currentNode = Q.shift();
+            if(currentNode == null){
+                if(Q.length==0) break;
+                Q.push(null)
+                result.push('\n');
+               // console.log('\n');
+                continue;
+
+            }
+            result.push(currentNode.data);
+           // console.log(currentNode.data);
+            if(currentNode.left !== null){
+                Q.push(currentNode.left);
+            }if(currentNode.right !== null){
+                Q.push(currentNode.right);
+            }
+        }
+        return result;
+           
+    }
+    
+    leftView(node = this.root){
+        let resultArray = new Map();
+        let map = leftViewUtil(root,resultArray, 0);
+        function leftViewUtil(node, resultArray, level){  
+            if (node == null){
+                return;
+            }
+            if (resultArray.get(level)==null)
+            {
+                resultArray.set(level,node.data);
+            }
+            leftViewUtil(node.left, resultArray, level + 1);
+            leftViewUtil(node.right, resultArray, level + 1);
+            return resultArray
+        }
+        let leftViewArray = [];
+        for(let i = 0; i < map.size; i++){
+            leftViewArray.push(map.get(i))
+        }
+        return leftViewArray
+        
+    }
+    
 
 
 }
 
 const bst = new BST();
-bst.add(9);
+// bst.add(9);
+// bst.add(4);
+// bst.add(17);
+// bst.add(3);
+// bst.add(6);
+// bst.add(22);
+// bst.add(5);
+// bst.add(7);
+// bst.add(20);
 bst.add(4);
-bst.add(17);
 bst.add(3);
-bst.add(6);
-bst.add(22);
 bst.add(5);
+bst.add(2);
+bst.add(1);
+bst.add(6);
 bst.add(7);
-bst.add(20);
 console.log("Max Height:", bst.findMaxHeight())
 console.log('inOrder: ' + bst.inOrder());
 console.log('preOrder: ' + bst.preOrder());
 console.log('postOrder: ' + bst.postOrder());
 console.log('Total Nodes: ' + bst.totalSize());
+console.log('Level Order Traversal:');
+console.log(bst.levelOrderTraversal());
+console.log("Left View of Tree:", bst.leftView());

@@ -26,13 +26,13 @@ findMaxHeight = function (node = this.root){
 findMaxHeight = (root)=>{
     if(root == null) return -1
     else{
-        return (Math.max(findMaxHeight(root.left), findMaxHeight(root.right)+ 1))
+        return (Math.max(findMaxHeight(root.left), findMaxHeight(root.right))+1)
     }
 }
 findMinHeight = (root)=>{
     if(root == null) return -1
     else{
-        return (Math.min(findMinHeight(root.left), findMinHeight(root.right)+ 1))
+        return (Math.min(findMinHeight(root.left), findMinHeight(root.right))+ 1)
     }
 }
 isBalanced = function(){
