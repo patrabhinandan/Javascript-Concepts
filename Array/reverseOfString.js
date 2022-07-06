@@ -2,14 +2,14 @@ function reverse(str){
     let n = str.length;
     let arr = str.split(" ");
     let w = [];
-    let a = [];
+    let l = [];
    for(let i = arr.length; i>=0;i--){
        w.push(arr[i]);
    }
    for(let i = n; i>=0;i--){
-    a.push(str[i]);
+    l.push(str[i]);
 }
-   ltr = a.join('');
+   ltr = l.join('');
    wrd = w.join(' ');
   console.log("reverse by letter==>", ltr);
   console.log("reverse by word==>", wrd);

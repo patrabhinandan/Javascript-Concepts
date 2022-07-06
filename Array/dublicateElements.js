@@ -1,3 +1,5 @@
+/*** Brute Solution */
+
 const dublicateElem = (arr)=>{
     let n = arr.length;
     let tempArr =arr.sort((a,b)=>(a-b));
@@ -10,7 +12,35 @@ const dublicateElem = (arr)=>{
     }
     return [...new Set(result)  ]
 }
+/** Better Solution **/
+const findDuplicate = function(arr) {
+    let n = arr.length;
+    let tempArray = new Array(n).fill(0);
+    for(let i = 0; i <= n; i ++){
+        let index = arr[i];
+        if(tempArray[index]!=0){
+            return arr[i];
+        }else{
+            tempArray[index]= 1;
+        }        
+    }
+}
+/* Optimal Solution -- Turtoise Method*/
+const findDuplicateTurtoise = function(arr){
+    let slow = arr[0];
+    let fast = arr[0];
+    do{
+        slow = arr[slow];
+        fast = arr[arr[fast]];
+    }while(slow != fast)
+     fast = arr[0];
+     if(slow!=fast){
+        slow = arr[slow];
+        fast = arr[fast]
+     }
+     return slow;
 
+}
 //https://www.youtube.com/watch?v=iiYc32-4ZJY
 const dublicateElemIndex = (arr)=>{
     let n = arr.length;
@@ -45,7 +75,10 @@ function removeDuplicate1(str){
     }
     console.log(temp)
 }
-removeDuplicate1("godisgod");
-let A = [2,3,1,2,3];
-console.log(dublicateElem(A));
-console.log("with index=",dublicateElemIndex(A));
+// removeDuplicate1("godisgod");
+ //let A = [2,3,1,2,3];
+ let A = [2,5,9,6,9,3,8,9,7,1];
+// console.log(dublicateElem(A));
+// console.log("with index=",dublicateElemIndex(A));
+//console.log(findDuplicate(A));
+console.log(findDuplicateTurtoise(A));
