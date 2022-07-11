@@ -15,27 +15,23 @@ const promise3 = new Promise((resolve,reject)=>{
 });
 
 const ArrayOfPromises = [promise1,promise2,promise3];
-
-Promise.myAll= function(ArrayOfPromises){
-    let resultArray = []; let completed = 0;
+Promise.myAll = function(ArrayOfPromises){
+    let completed = 0; let resultArray = [];
     return new Promise((resolve,reject)=>{
         ArrayOfPromises.forEach((promise,index)=>{
-            promise.then((eachValue)=>{
+            promise.then((eachvalue)=>{
                 completed++;
-                resultArray[index]=eachValue;
-                if(completed == ArrayOfPromises.length){                
+                resultArray[index] = eachvalue;
+                if(completed === ArrayOfPromises.length){
                     resolve(resultArray)
                 }
             }).catch((err)=>{
-               reject(err)
-            }        
-           )
-    
+                reject(err)
+            })
         })
     })
-    
-    
 }
+Promise.myAll(ArrayOfPromises).then(value=>{console.log(value)})
 
 Promise.myAll(ArrayOfPromises)
   .then((value) => {

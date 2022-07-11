@@ -11,18 +11,19 @@ const promise2 = new Promise((resolve,reject)=>{
 const promise3 = new Promise((resolve,reject)=>{
     setTimeout(() => {
         reject("promise 3 rejected")
-    }, 100);
+    }, 50);
 });
 
 const ArrayOfPromises = [promise1,promise2,promise3];
 Promise.myRace = function(ArrayOfPromises){
     return new Promise((resolve,reject)=>{
-        ArrayOfPromises.forEach((promise)=>{
-            promise.then(value=>
-                resolve(value)).catch((err)=>{
+        ArrayOfPromises.forEach((promise) => {
+            promise.then(value=>{
+                resolve(value)
+            }).catch((err)=>{
                     reject(err)
                 })
-        })
+        });
     })
 }
 Promise.myRace(ArrayOfPromises)

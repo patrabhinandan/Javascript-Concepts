@@ -1,14 +1,14 @@
 const Person = {
-    fName : "Abhinandan",
-    lName : "Patra"
+     fname:  "Abhinadan",
+     lname: "Patra"
 }
-
-function printDetails (age,place){
-    console.log(`my name is ${this.fName} ${this.lName} and my age is ${age} and i live in ${place}`);
+function printDetails(age,place){
+    console.log(`My Full name  is ${this.fname} ${this.lname} and my age is ${age} and i live in ${place}`)
 }
-
 Function.prototype.myApply = function(context,args){
     context._this = this;
-    return context._this(...args);
+    return context._this(...args)
 }
-printDetails.myApply(Person,['23','kgp']);
+printDetails.myApply(Person,[23,'KGP'])
+
+

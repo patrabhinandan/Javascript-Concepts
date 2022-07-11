@@ -29,5 +29,15 @@ const main = function (str){
         console.log(curr[index]);
     }
 }
+
+function powerset(str,i,curr){
+    if(i == str.length){
+        console.log(curr);
+        return
+    }
+    powerset(str,i+1,curr+str[i]);
+    powerset(str,i+1,curr)
+}
 let str = "abc";
-main(str);
+powerset(str,0,"");
+//main(str);

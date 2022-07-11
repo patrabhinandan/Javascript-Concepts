@@ -16,21 +16,23 @@ const promise3 = new Promise((resolve,reject)=>{
 
 const ArrayOfPromises = [promise1,promise2,promise3];
 
-
 Promise.myAny = function(ArrayOfPromises){
     let rejectedCount = 0;
-    const customError = new AggregateError([new Error("Some Error")],"All promise failed");
-     return new Promise((resolve,reject)=>{
-        return ArrayOfPromises.forEach((promise)=>{
-            promise.then((eachValue)=>resolve(eachValue)
-            ).catch((err)=>{
-                rejectedCount++;
-                if(rejectedCount == ArrayOfPromises.length){
-                    reject(customError);
-                }
-            })
-        })
-     })     
+    let customError = new AggregateError([new Error("some error")],"All Promises failed");
+    return new Promise((resolve,reject)=>{        
+            return ArrayOfPromises.forEach((promise)=>{
+                promise.then(eachValue=>{
+                    resolve(eachValue)
+                }).catch(err=>{
+                    rejectedCount++;
+                    if(rejectedCount == ArrayOfPromises.length){
+                        reject(customError)
+                    }
+                })
+            })   
+            
+    })
+    
 }
 
 
