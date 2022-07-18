@@ -24,15 +24,16 @@ function findPivot(arr , low , high){
     [arr[pIndex+1],arr[high]] = [arr[high],arr[pIndex+1]];
     return (pIndex+1)
 }
-// function findPivot2(arr , low , high){
-//     let pivot = arr[low];
-//     while(low<high){
-//         while(arr[low]<=pivot) low++;
-//         while(arr[high]>pivot) high--;
-//         if(low<high)
-//         [arr[low],arr[high]] = [arr[high],arr[low]];
-//     }
-//     [pivot,arr[high]] = [arr[high],pivot];
-//     return high+1;
-// }
+function findPivot2(array,low,high){
+    let pivot = arr[high];
+    let pIndex = low;
+    for (let i = low; i <= high-1; i++) {
+            if(arr[i]<= pivot){
+                [array[i],array[pIndex]] = [array[pIndex],array[i]];
+                    pIndex++;
+            }     
+    }
+    [array[pIndex],array[high]] = [array[high],array[pIndex]];
+    return (pIndex);
+}
 console.log(quickSort(arr,0,arr.length-1))
