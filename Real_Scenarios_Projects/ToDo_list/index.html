@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="container">
+    <h1 class="header">Sample Application To Create Task List</h1>
+    <!-- generic Message container -->
+    <div class="messageContainer">
+        <div class="messageLabel" id="commonMessage"></div>
+    </div>
+    <div class="addListBtn m-b-10">
+        <button class="add" onClick="addList()">Add Another List</button>
+    </div>
+    <div id="addListContainer" style="display: none;">
+        <form id="new-taskList-form" >
+            <div class="labelText m-b-10">Enter the name of the list</div>            
+            <div class="listForm">
+                <input 
+                type="text" 
+                name="new-task-input" 
+                id="new-task-input" 
+                placeholder="Add Another List" />
+            <input 
+                type="submit"
+                id="new-list-submit" 
+                value="Save"/>
+            </div>
+            
+        </form>
+    </div>
+    
+    <div id="tasksList" class="m-lr-10 taskListContainer">        
+        <!-- Dynamic Task Name content generates here-->
+    </div>
+</div>
+<script src="main.js"></script>
+</body>
+</html>

@@ -9,14 +9,15 @@
 //         }, delay);
 //     }
 // }
- const debouncePolyfill = function(callback,delay){
-    return function() {
-        let context = this;
-        let timer;
-        let args = arguments;
-        clearTimeout(timer);
-        timer= setTimeout(() => {
-            callback.apply(context,args)
+const myDebounce = (fn, delay)=>{
+    let timeroutId;
+    return ()=>{        
+        if(timeroutId){
+            clearTimeout(timeroutId);
+        }
+        timeroutId = setTimeout(() => {
+            fn(...args)
         }, delay);
     }
- }
+
+}

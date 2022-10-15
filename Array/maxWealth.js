@@ -19,4 +19,4 @@
  }
  let accounts = [[1,2,3],[3,2,1]];
  //let accounts = [[2,8,7],[7,1,3],[1,9,5]];
- maxWealth(accounts);
+ maxWealth(accounts);//6
