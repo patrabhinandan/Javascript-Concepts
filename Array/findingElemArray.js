@@ -12,7 +12,10 @@ function findElemOfArray(arr){
     // for( let [key , value] of map.entries()){
     //     console.log(value);
     // }
-    map.forEach(item=> console.log(item))
+    map.forEach(item=> console.log(item));
+    
+    const mapAsc = new Map([...map.entries()].sort());
+    console.log("Sorted Entries:" ,mapAsc);
 }
 let arr = ['abc', 'ab', 'cde', 'efg', 'ac', 'abcd','efgh','ex','a'];
 findElemOfArray(arr)
